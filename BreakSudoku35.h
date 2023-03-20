@@ -360,6 +360,7 @@ bool sudoku_simple_solver::solve(){
             return false;
         }
     }
+    return true;
 }
 }
 #endif
