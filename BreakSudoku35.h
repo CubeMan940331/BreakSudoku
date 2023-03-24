@@ -302,9 +302,13 @@ bool sudoku_complex_solver::solve(){
     state node;
     for(char i=0;i<9;++i){
         for(char j=0;j<9;++j){
+            if(!node.note[i][j][this->sudoku->puzzle[i][j]]){
+                return false;
+            }
             node.set_n(i,j,this->sudoku->puzzle[i][j]);
         }
     }
+    if(!node.is_legal()) return false;
     return dfs(node);
 }
 }
