@@ -1,19 +1,18 @@
-#include "BreakSudoku35.h"
-#include"Timer.h"
-#include<iostream>
+#include "sudoku_complex_solver.hpp"
+#include "sudoku_simple_solver.hpp"
+#include "Timer.hpp"
 using namespace std;
-int main(){
+signed main(){
     cubeman::Sudoku sudoku;
     cubeman::Timer timer;
+    cubeman::sudoku_complex_solver solver;
     long long T;
     while(sudoku.read(cin)){
         timer.start();
-        //cubeman::sudoku_complex_solver solver(sudoku);
-        cubeman::sudoku_simple_solver solver(sudoku);
-        if(solver.solve()){
+        if(solver.solve(sudoku)){
             T=timer.elapsed_us();
             cout<<sudoku.to_str();
-            cout<<T<<" us\n";
+            cout<<T<<"us\n";
         }
         else cout<<"error input\n";
         cout<<'\n';
